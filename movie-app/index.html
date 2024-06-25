@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet"
+    href="https://unpkg.com/bootstrap/dist/css/bootstrap.css">
+    
+</head>
+<body>
+    <h1 class='display-1'>My Movie List</h1>
+    <div class="container">
+        <div class="col-sm-4">
+            Movie Title
+            <input class="form-control" type="text">
+        </div>
+        <div class="col-sm-4">
+            Movie Rating
+            <input class="form-control" type="number" min="0" max="10" value="0">
+        </div>
+        <button id="submit" type="button" class="btn btn-dark">Post</button>
+    </div>
+    <h1 class='display-1'>Movies</h1>
+    <ol class="list-group"></ol>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script>
+    $(function() {
+        $('#submit').on('click', function() {
+            let title = $('.form-control').eq(0).val();
+            let rating = $('.form-control').eq(1).val();
+            if (title.length < 2) return;
+            //console.log(`${title} | ${rating}`);
+
+            $('ol').append($('<li>', {
+                text: `${title} | ${rating}`
+            })).append($('<button>', {
+                text: 'Remove',
+                click: function() {
+                    $(this).parent().remove()
+                }
+            }))
+
+        });
+    })
+</script>
+</body>
+
+</html>
